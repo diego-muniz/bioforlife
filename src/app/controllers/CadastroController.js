@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import * as Yup from 'yup';
+import { differenceInYears } from 'date-fns';
 import Person from '../models/person';
 import existsError from '../helpers/validator';
 
@@ -45,6 +46,15 @@ class CadastroController {
       hasDependecy,
       dependencies,
     } = req.body;
+
+    const dtNascimento = new Date(dta_nascimento);
+    const adult = differenceInYears(new Date(), dtNascimento);
+
+    if (adult < 18) {
+      return res.status(404).json({
+        error: 'Você precisa ser maior de 18 anos !',
+      });
+    }
 
     const cpfValid = validarCpf(cpf);
     if (!cpfValid) {
@@ -99,6 +109,14 @@ class CadastroController {
           address_city,
         } = dep;
 
+        const dtNascimentoDep = new Date(dta_nascimento);
+        const adultDep = differenceInYears(new Date(), dtNascimentoDep);
+        if (adultDep > 17) {
+          return res.status(404).json({
+            error: `Dependente ${nome} e maior de 18 anos !`,
+          });
+        }
+
         const cadastroDep = {
           cod_person_resp: createPerson.cod_person,
           nome,
@@ -116,8 +134,6 @@ class CadastroController {
           address_city,
         };
         const personDep = await Person.create(cadastroDep);
-
-        console.log(personDep);
       }
     }
 
