@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import axios from 'axios';
-import Gs_uf from '../models/gs_uf';
 import Gs_municipio from '../models/gs_municipio';
 
 class BuscarCepController {

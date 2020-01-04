@@ -15,7 +15,7 @@ class CadastroController {
       residencial_phone: Yup.string().required(),
       cellphone: Yup.string().required(),
       dta_nascimento: Yup.date().required(),
-      email: Yup.string().required(),
+      email: Yup.string(),
       address_CEP: Yup.string().required(),
       address: Yup.string().required(),
       address_comp: Yup.string().required(),
