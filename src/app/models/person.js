@@ -7,8 +7,11 @@ class Person extends Model {
         cod_person: {
           type: Sequelize.INTEGER,
           primaryKey: true,
+          autoIncrement: true,
         },
+        cod_person_resp: Sequelize.INTEGER,
         nome: Sequelize.STRING,
+        email: Sequelize.STRING,
         rg: Sequelize.STRING,
         cpf: Sequelize.STRING,
         data_inclusao: Sequelize.DATE,

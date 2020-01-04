@@ -16,6 +16,7 @@
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.9.4",
+    "validar-cpf": "^2.1.2",
     "youch": "^2.0.10"
   },
   "devDependencies": {

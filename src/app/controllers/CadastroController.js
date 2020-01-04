@@ -1,13 +1,9 @@
+/* eslint-disable no-restricted-syntax */
 import * as Yup from 'yup';
 import Person from '../models/person';
 import existsError from '../helpers/validator';
 
-// address_cep = cep (sem pontos e traços)
-// address = logradouro (viacep)
-// address_neighbour = bairro (viacep)
-// address_city = cidade.CD_MUNICIPIO_COMPLETO
-// address_state = cidade.cd_ibge_uf
-// address_comp = complemento (viacep) // pode digitar tmb
+const validarCpf = require('validar-cpf');
 
 class CadastroController {
   async store(req, res) {
@@ -25,6 +21,8 @@ class CadastroController {
       address_neighbour: Yup.string().required(),
       address_state: Yup.string().required(),
       address_city: Yup.string().required(),
+      hasDependecy: Yup.boolean().required(),
+      dependencies: Yup.array(),
     });
 
     const error = await existsError(schema, req.body);
@@ -44,7 +42,14 @@ class CadastroController {
       address_neighbour,
       address_state,
       address_city,
+      hasDependecy,
+      dependencies,
     } = req.body;
+
+    const cpfValid = validarCpf(cpf);
+    if (!cpfValid) {
+      return res.status(404).json({ error: 'CPF Invalido, tente novamente !' });
+    }
 
     const cadastro = {
       nome,
@@ -73,6 +78,48 @@ class CadastroController {
     };
 
     const createPerson = await Person.create(cadastro);
+
+    if (hasDependecy) {
+      // eslint-disable-next-line guard-for-in
+      for (const dependency in dependencies) {
+        const dep = dependencies[dependency];
+        const {
+          nome,
+          rg,
+          cpf,
+          residencial_phone,
+          cellphone,
+          dta_nascimento,
+          email,
+          address_CEP,
+          address,
+          address_comp,
+          address_neighbour,
+          address_state,
+          address_city,
+        } = dep;
+
+        const cadastroDep = {
+          cod_person_resp: createPerson.cod_person,
+          nome,
+          rg,
+          cpf,
+          residencial_phone,
+          cellphone,
+          dta_nascimento,
+          email,
+          address_CEP,
+          address,
+          address_comp,
+          address_neighbour,
+          address_state,
+          address_city,
+        };
+        const personDep = await Person.create(cadastroDep);
+
+        console.log(personDep);
+      }
+    }
 
     return res.json(createPerson);
   }
