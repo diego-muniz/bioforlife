@@ -1,11 +1,10 @@
 import Sequelize from 'sequelize';
 
 import databaseConfig from '../config/database';
-import Gs_uf from '../app/models/gs_uf';
 import Gs_municipio from '../app/models/gs_municipio';
 import Person from '../app/models/person';
 
-const models = [Gs_uf, Gs_municipio, Person];
+const models = [Gs_municipio, Person];
 
 class Database {
   constructor() {

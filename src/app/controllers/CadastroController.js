@@ -109,6 +109,26 @@ class CadastroController {
           address_city,
         } = dep;
 
+        const schemaDep = Yup.object().shape({
+          nome: Yup.string().required(),
+          rg: Yup.string().required(),
+          cpf: Yup.string(),
+          residencial_phone: Yup.string(),
+          cellphone: Yup.string(),
+          dta_nascimento: Yup.date().required(),
+          email: Yup.string(),
+          address_CEP: Yup.string().required(),
+          address: Yup.string().required(),
+          address_comp: Yup.string().required(),
+          address_neighbour: Yup.string().required(),
+          address_state: Yup.string().required(),
+          address_city: Yup.string().required(),
+        });
+
+        // eslint-disable-next-line no-await-in-loop
+        const errorDep = await existsError(schemaDep, dep);
+        if (errorDep) return res.status(400).json(errorDep);
+
         const dtNascimentoDep = new Date(dta_nascimento);
         const adultDep = differenceInYears(new Date(), dtNascimentoDep);
         if (adultDep > 17) {
