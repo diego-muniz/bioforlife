@@ -21,19 +21,14 @@ class BuscarCepController {
       res.status(404).json({ error: 'Informe o CEP corretamente !' });
     }
 
-    const { uf } = viaCep.data;
+    const { ibge } = viaCep.data;
 
-    const dadosUf = await Gs_uf.findOne({ where: { CD_UF: uf } });
-
-    if (!dadosUf) {
-      return res.status(404).json({ error: 'UF não encontrada !' });
-    }
-
-    const cidades = await Gs_municipio.findAll({
-      where: { CD_IBGE_UF: dadosUf.CD_IBGE },
+    const cidade = await Gs_municipio.findOne({
+      where: { CD_MUNICIPIO_COMPLETO: ibge },
+      attributes: ['CD_IBGE_UF', 'CD_MUNICIPIO_COMPLETO'],
     });
 
-    return res.json({ endereco: viaCep.data, cidades });
+    return res.json({ endereco: viaCep.data, cidade });
   }
 }
 
