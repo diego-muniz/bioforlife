@@ -13,7 +13,10 @@ async function BasicAuth(req, res, next) {
   const [username, password] = credentials.split(':');
 
   if (
-    !(username === process.env.USERNAME && password === process.env.PASSWORD)
+    !(
+      username === process.env.useraccount &&
+      password === process.env.passwordaccount
+    )
   ) {
     return res
       .status(401)
