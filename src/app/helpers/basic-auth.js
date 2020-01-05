@@ -14,8 +14,8 @@ async function BasicAuth(req, res, next) {
 
   if (
     !(
-      username === process.env.useraccount &&
-      password === process.env.passwordaccount
+      username === process.env.AUTH_USER &&
+      password === process.env.AUTH_PASSWORD
     )
   ) {
     return res
