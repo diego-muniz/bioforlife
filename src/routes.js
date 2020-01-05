@@ -12,6 +12,6 @@ routes.use(basicAuth);
 
 routes.get('/buscarcep/:cep', BuscarCepController.show);
 routes.post('/cadastrar', CadastroController.store);
-routes.post('/termo', TermosController.show);
+routes.get('/termo', TermosController.show);
 
 export default routes;
