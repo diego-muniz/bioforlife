@@ -147,15 +147,7 @@ class CadastroController {
           rg: Yup.string().required(),
           cpf: Yup.string(),
           residencial_phone: Yup.string(),
-          cellphone: Yup.string(),
           dta_nascimento: Yup.date().required(),
-          email: Yup.string(),
-          address_CEP: Yup.string().required(),
-          address: Yup.string().required(),
-          address_comp: Yup.string().required(),
-          address_neighbour: Yup.string().required(),
-          address_state: Yup.string().required(),
-          address_city: Yup.string().required(),
         });
 
         // eslint-disable-next-line no-await-in-loop
