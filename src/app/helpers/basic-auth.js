@@ -1,4 +1,6 @@
 async function BasicAuth(req, res, next) {
+  console.log(req.path);
+  console.log('PATH');
   if (
     !req.headers.authorization ||
     req.headers.authorization.indexOf('Basic ') === -1

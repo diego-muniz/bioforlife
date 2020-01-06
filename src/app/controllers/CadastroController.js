@@ -61,6 +61,38 @@ class CadastroController {
       return res.status(404).json({ error: 'CPF Invalido, tente novamente !' });
     }
 
+    const ultimoCadastro = await Person.findOne({
+      order: [['data_inclusao', 'DESC']],
+    });
+
+    const ultimoProtocolo =
+      ultimoCadastro.cod_biciletario !== null
+        ? ultimoCadastro.cod_biciletario
+        : 0;
+
+    let novoProtocolo = +ultimoProtocolo + 1;
+    switch (novoProtocolo.toString().length) {
+      case 5:
+        novoProtocolo = `0${novoProtocolo}`;
+        break;
+      case 4:
+        novoProtocolo = `00${novoProtocolo}`;
+        break;
+      case 3:
+        novoProtocolo = `000${novoProtocolo}`;
+        break;
+      case 2:
+        novoProtocolo = `0000${novoProtocolo}`;
+        break;
+      case 1:
+        novoProtocolo = `00000${novoProtocolo}`;
+        break;
+      default:
+        break;
+    }
+
+    console.log(novoProtocolo.length);
+
     const cadastro = {
       nome,
       rg,
@@ -85,6 +117,7 @@ class CadastroController {
       status: 0,
       senha: '@UC2014',
       completo: 1,
+      cod_biciletario: novoProtocolo,
     };
 
     const createPerson = await Person.create(cadastro);
@@ -152,6 +185,7 @@ class CadastroController {
           address_neighbour,
           address_state,
           address_city,
+          cod_biciletario: novoProtocolo,
         };
         const personDep = await Person.create(cadastroDep);
       }
