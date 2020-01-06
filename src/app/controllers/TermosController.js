@@ -5,13 +5,9 @@ class TermosController {
 
       CONCESSIONÁRIA DA LINHA 4 DO METRÔ DE SÃO PAULO S.A., localizada na Rua Heitor dos Prazeres, 320 – Vila Sônia, Cidade de São Paulo, Estado de São Paulo, inscrita no CNPJ/MF nº 07.682.638/0001-07, daqui para frente chamada de VIAQUATRO;
 
-
-
       CONDIÇÕES GERAIS
 
-
       I. Considerando que a VIAQUATRO é titular do direito de operar os serviços de transporte de passageiros da Linha 4 – Amarela do Metrô de São Paulo (LINHA 4 – AMARELA), nos termos do Contrato de Concessão nº 4232521201 (“Contrato de Concessão”) celebrado com o Estado de São Paulo (“Poder Concedente”);
-
 
       Considerando que o USUÁRIO deseja utilizar o bicicletário cuja operação e manutenção é da VIAQUATRO, nos termos estabelecidos com o Poder Concedente.
 
@@ -22,7 +18,6 @@ class TermosController {
       Estabelecer as condições de uso dos bicicletários localizados nas áreas da Linha 4 – Amarela do metrô de São Paulo, as quais estão sob concessão da VIAQUATRO.
 
       Condições aos USUÁRIOS:
-
 
       2.1.	Uso do Bicicletário:
 
@@ -62,7 +57,6 @@ class TermosController {
 
       Ao aceitar o presente Termo o USUÁRIO autoriza a VIAQUATRO a guardar as imagens filmadas e/ou fotografadas para identificação do USUÁRIO e da bicicleta, autorizando também, o seu uso para fins de comprovação da relação contratual que se estabelece nesse momento entre o USUÁRIO e a VIAQUATRO. Essas imagens são para uso da VIAQUATRO e sua liberação à terceiros ficará condicionada à análise exclusiva da VIAQUATRO, não implicando em qualquer direito de perdas e danos ao USUÁRIO.
 
-
       2.3.	Procedimentos locais:
 
       Horários de funcionamento: no horário comercial indicado nas Estações que possuem bicicletário. Eventuais mudanças estarão afixadas nos próprios locais dos bicicletários.
@@ -77,8 +71,6 @@ class TermosController {
 
       (a) A bicicleta pode permanecer no bicicletário por até 04(quatro) dias consecutivos. Decorrido esse prazo sem o que USUÁRIO tenha retirado sua bicicleta a VIAQUATRO poderá, à seu critério de avaliação, cortar as travas/cadeados da bicicleta para desocupação do espaço no bicicletário, tendo em vista o objetivo social e de utilidade pública que envolve o uso do bicicletário. Na ocasião, nenhum ressarcimento será devido ao USUÁRIO pelo corte das travas/cadeados, tendo em vista o descumprimento do prazo de permanência máximo.
 
-
-
       2.6.	Destino da bicicleta:
 
       A bicicleta que tiver sua trava/cadeado cortado será levada para um outro local à critério da VIAQUATRO e ficará sob sua guarda por até 60(sessenta) dias, depois disso, a bicicleta será doada para organização não governamental a escolha da Concessionaria. Nesta situação, o USUÁRIO que desejar retirar sua bicicleta o deverá fazer dentro dos 60(sessenta) dias citados, sendo que, para tanto deverá realizar o agendamento prévio através do telefone 0800-7707100. Após realizado o agendamento, o USUÁRIO deverá dirigir-se ao Pátio Vila Sônia, localizado à Rua Heitor dos Prazeres, nº 320, Vila Sônia, São Paulo/SP, Cep: 05522-000, de segunda à sexta-feira das 10:00 às 12:00 e das 14:00 às 17:00 horas, exceto feriados e emendas de feriados. Em caso de dúvida, o USUÁRIO poderá se dirigir ao Atendimento ao Público da Estação em que deixou sua bicicleta.
@@ -92,9 +84,6 @@ class TermosController {
       2.8.	Utilidade Pública:
 
       O USUÁRIO, ao assinar este Termo, fica ciente de que o bicicletário é um integrador de modais e tem por objetivo melhor atender ao público usuário do metrô e contribuir socialmente para o bem comum, por essa razão, o USUÁRIO se obriga a observar as regras acordadas neste Termo, especialmente, no que tange ao tempo de permanência de sua(s) bicicleta(s) no bicicletário, cuidados com a guarda através de dispositivos compatíveis instalados adequadamente e da exclusividade na utilização do bicicletário.
-
-
-
 
       Responsabilidades:
       A VIAQUATRO é responsável exclusivamente pela operação e manutenção do bicicletário nas condições acordadas neste Termo e com seu Poder Concedente.
@@ -117,7 +106,6 @@ class TermosController {
 
       Sem que se tenha apresentado as condições indicadas no item 4. “b” acima, a VIAQUATRO não estará obrigada a promover o ressarcimento/indenização. Na ocasião, serão avaliadas pela VIAQUATRO as condições às quais a bicicleta foi deixada no bicicletário e os critérios de cuidado do USUÁRIO em observância dos itens descritos neste Termo.
 
-
       Condições Gerais:
 
       Este Termo obriga a VIAQUATRO e o USUÁRIO bem como os seus herdeiros e sucessores.
@@ -133,9 +121,7 @@ class TermosController {
       Fica eleita a Cidade/Foro de São Paulo, Estado de São Paulo, para dirimir qualquer
       disputa envolvendo este Termo.
 
-
       São Paulo, data conforme indicado no protocolo.
-
 
       A assinatura por meio de “aceite eletrônico” via internet.
 
