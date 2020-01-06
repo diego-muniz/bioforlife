@@ -34,6 +34,7 @@ class Person extends Model {
         status: Sequelize.INTEGER,
         senha: Sequelize.STRING,
         completo: Sequelize.INTEGER,
+        cod_biciletario: Sequelize.STRING,
       },
       {
         sequelize,
