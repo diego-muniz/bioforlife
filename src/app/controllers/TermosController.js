@@ -122,9 +122,7 @@ class TermosController {
       disputa envolvendo este Termo.
 
       São Paulo, data conforme indicado no protocolo.
-
       A assinatura por meio de “aceite eletrônico” via internet.
-
       `,
     });
   }
