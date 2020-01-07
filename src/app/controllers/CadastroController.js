@@ -120,7 +120,7 @@ class CadastroController {
       cod_biciletario: novoProtocolo,
     };
 
-    const existsCPF = await Person.findOne({ where: cpf });
+    const existsCPF = await Person.findOne({ where: { cpf } });
 
     if (existsCPF) {
       return res.status(404).json({
@@ -128,7 +128,7 @@ class CadastroController {
       });
     }
 
-    const existsRG = await Person.findOne({ where: rg });
+    const existsRG = await Person.findOne({ where: { rg } });
 
     if (existsRG) {
       return res.status(404).json({
@@ -196,7 +196,7 @@ class CadastroController {
           cod_biciletario: novoProtocolo,
         };
 
-        const existsCPFDep = await Person.findOne({ where: cpf });
+        const existsCPFDep = await Person.findOne({ where: { cpf } });
 
         if (existsCPFDep) {
           return res.status(404).json({
@@ -204,7 +204,7 @@ class CadastroController {
           });
         }
 
-        const existsRGDep = await Person.findOne({ where: rg });
+        const existsRGDep = await Person.findOne({ where: { rg } });
 
         if (existsRGDep) {
           return res.status(404).json({
