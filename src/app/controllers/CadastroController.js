@@ -14,7 +14,13 @@ class CadastroController {
       cpf: Yup.string().required(),
       residencial_phone: Yup.string().required(),
       cellphone: Yup.string().required(),
-      dta_nascimento: Yup.date().required(),
+      dta_nascimento: Yup.string()
+        .required()
+        .test('dta_nascimento', 'Data de Nascimento invalida !', value => {
+          return /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/g.test(
+            value
+          );
+        }),
       email: Yup.string(),
       address_CEP: Yup.string().required(),
       address: Yup.string().required(),
@@ -163,7 +169,13 @@ class CadastroController {
           rg: Yup.string().required(),
           cpf: Yup.string(),
           residencial_phone: Yup.string(),
-          dta_nascimento: Yup.date().required(),
+          dta_nascimento: Yup.string()
+            .required()
+            .test('dta_nascimento', 'Data de Nascimento invalida !', value => {
+              return /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/g.test(
+                value
+              );
+            }),
         });
 
         // eslint-disable-next-line no-await-in-loop
