@@ -120,6 +120,22 @@ class CadastroController {
       cod_biciletario: novoProtocolo,
     };
 
+    const existsCPF = await Person.findOne({ where: cpf });
+
+    if (existsCPF) {
+      return res.status(404).json({
+        error: `CPF ${cpf} já possui cadastro !`,
+      });
+    }
+
+    const existsRG = await Person.findOne({ where: rg });
+
+    if (existsRG) {
+      return res.status(404).json({
+        error: `RG ${rg} já possui cadastro !`,
+      });
+    }
+
     const createPerson = await Person.create(cadastro);
 
     if (hasDependecy) {
@@ -179,6 +195,23 @@ class CadastroController {
           address_city,
           cod_biciletario: novoProtocolo,
         };
+
+        const existsCPFDep = await Person.findOne({ where: cpf });
+
+        if (existsCPFDep) {
+          return res.status(404).json({
+            error: `CPF ${cpf} já possui cadastro !`,
+          });
+        }
+
+        const existsRGDep = await Person.findOne({ where: rg });
+
+        if (existsRGDep) {
+          return res.status(404).json({
+            error: `RG ${rg} já possui cadastro !`,
+          });
+        }
+
         const personDep = await Person.create(cadastroDep);
       }
     }
