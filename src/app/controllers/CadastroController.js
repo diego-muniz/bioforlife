@@ -58,7 +58,9 @@ class CadastroController {
 
     const cpfValid = validarCpf(cpf);
     if (!cpfValid) {
-      return res.status(404).json({ error: 'CPF Invalido, tente novamente !' });
+      return res
+        .status(404)
+        .json({ error: `CPF ${cpf} Invalido, tente novamente !` });
     }
 
     const ultimoCadastro = await Person.findOne({
@@ -136,8 +138,6 @@ class CadastroController {
       });
     }
 
-    const createPerson = await Person.create(cadastro);
-
     if (hasDependecy) {
       // eslint-disable-next-line guard-for-in
       for (const dependency in dependencies) {
@@ -179,6 +179,74 @@ class CadastroController {
         }
 
         const cadastroDep = {
+          nome,
+          rg,
+          cpf,
+          residencial_phone,
+          cellphone,
+          dta_nascimento,
+          email,
+          address_CEP,
+          address,
+          address_comp,
+          address_neighbour,
+          address_state,
+          address_city,
+          cod_biciletario: novoProtocolo,
+        };
+
+        if (cpf) {
+          const cpfValidDep = validarCpf(cpf);
+          if (!cpfValidDep) {
+            return res
+              .status(404)
+              .json({ error: `CPF ${cpf} Invalido, tente novamente !` });
+          }
+
+          const existsCPFDep = await Person.findOne({ where: { cpf } });
+
+          if (existsCPFDep) {
+            return res.status(404).json({
+              error: `CPF ${cpf} já possui cadastro !`,
+            });
+          }
+        }
+
+        if (rg) {
+          const existsRGDep = await Person.findOne({ where: { rg } });
+
+          if (existsRGDep) {
+            return res.status(404).json({
+              error: `RG ${rg} já possui cadastro !`,
+            });
+          }
+        }
+      }
+    }
+
+    const createPerson = await Person.create(cadastro);
+
+    if (hasDependecy) {
+      // eslint-disable-next-line guard-for-in
+      for (const dependency in dependencies) {
+        const dep = dependencies[dependency];
+        const {
+          nome,
+          rg,
+          cpf,
+          residencial_phone,
+          cellphone,
+          dta_nascimento,
+          email,
+          address_CEP,
+          address,
+          address_comp,
+          address_neighbour,
+          address_state,
+          address_city,
+        } = dep;
+
+        const cadastroDep = {
           cod_person_resp: createPerson.cod_person,
           nome,
           rg,
@@ -196,27 +264,11 @@ class CadastroController {
           cod_biciletario: novoProtocolo,
         };
 
-        const existsCPFDep = await Person.findOne({ where: { cpf } });
-
-        if (existsCPFDep) {
-          return res.status(404).json({
-            error: `CPF ${cpf} já possui cadastro !`,
-          });
-        }
-
-        const existsRGDep = await Person.findOne({ where: { rg } });
-
-        if (existsRGDep) {
-          return res.status(404).json({
-            error: `RG ${rg} já possui cadastro !`,
-          });
-        }
-
         const personDep = await Person.create(cadastroDep);
       }
     }
 
-    return res.json(createPerson);
+    return res.json({ protocolo: createPerson.cod_biciletario });
   }
 }
 
